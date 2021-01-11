@@ -12,6 +12,33 @@
             {{ counter }}
         </div>
 
+        <div id="bind-attribute">
+            <!-- 要素のtitle属性を、インスタンスのmessageプロパティの最新状態にする-->
+            <span v-bind:title="message">
+                Hover your mouse over me for a few seconds 
+                to see my dynamically bound title!
+            </span>
+        </div>
+
+        <div id="event-handling">
+            <p>{{ message }}</p>
+            <button v-on:click="reverseMessage"> Reverse Message </button>
+        </div>
+
+        <div id="conditional-rendering">
+            <span v-if="seen">Now you see me</span>
+        </div>
+        <!-- falseの場合は ＜！ーーv-ifーー＞ -->
+        <!-- trueの場合は <span>Now you see me</span> として表示される-->
+
+        <div id="list-rendering">
+            <ol>
+                <li v-for="todo in todos">
+                    {{ todo.text }}
+                </li>
+            </ol>
+        </div>
+
           <script src="./index.js"></script>
     </body>
 </html>
