@@ -81,3 +81,55 @@ const Listrendering = {
 }
 
 Vue.createApp(Listrendering).mount('#list-rendering')
+
+
+// Application & Component Instances
+
+const app = Vue.createApp({
+  data() {
+    return { count: 4 }
+  }
+})
+//vm(ViewModel)、インスタンスの参照に慣例的に変数vmを利用する。
+const vm = app.mount('#app')
+console.log(vm.count)
+
+
+// Template Syntax
+
+// Text
+// Mustache syntax 
+// v-once directive (do not update on data change) 
+
+// Raw HTML
+const RenderHtmlApp = {
+  data() {
+    return {
+      rawHtml: '<span style="color: red"> This should be red.</span>'
+    }
+  }
+}
+
+Vue.createApp(RenderHtmlApp).mount('#example1')
+
+// data Properties and Methods
+
+// Computed Properties and Watchers
+
+Vue.createApp({
+  data(){
+    return {
+      author: {
+        name: 'John Doe',
+        books: ['Vue 2 - Advanced Guide', 'Vue 3 -Basic Guide', 'Vue 4- The Mystery']
+      }
+    }
+  },
+  computed: {
+    // a computed getter
+    publishedBooksMessage(){
+      // `this` points to the vm instance
+      return this.author.books.length > 0? 'Yes' : 'No'
+    }
+  }
+}).mount('#computed-basics')
