@@ -2,6 +2,8 @@
     <head>
         <link rel="stylesheet" href="index.css">
         <script src="https://unpkg.com/vue@3.0.5/dist/vue.global.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+
     </head>
     <body>
         <div id="helloworld">
@@ -53,6 +55,20 @@
             <span>{{ publishedBooksMessage }}</span>
         </div>
 
-          <script src="./index.js"></script>
+        <ul id="array-rendering">
+            <li v-for="item in items" :key="item.message">
+            <!-- :key は　v-bind:keyの略-->
+                {{ item.message }}
+            </li>
+        </ul>
+
+        <div id="watch-example">
+            <p>Ask a yes/no question:
+                <input v-model="question"/>
+            </p>
+            <p>{{ answer }}</p>
+        </div>
+
+        <script src="./index.js"></script>
     </body>
 </html>

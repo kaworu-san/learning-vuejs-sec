@@ -1,3 +1,4 @@
+
 const HelloWorld = {
     data() {
       return {
@@ -133,3 +134,47 @@ Vue.createApp({
     }
   }
 }).mount('#computed-basics')
+
+
+//Watchers
+const watchExampleVM = Vue.createApp({
+  data(){
+    return {
+      question: '',
+      answer: 'Questions usually contain a question mark.'
+    }
+  },
+  watch: {
+    //questionが変わるたびにこの関数が実行される
+    question(newQuestion, oldQuestion){
+      if(newQuestion.indexOf('?') > -1){
+        this.getAnswer()
+      }
+    }
+  },
+  methods: {
+    getAnswer(){
+      this.answer = 'Thinking...'
+      axios
+      .get('https://yesno.wtf/api')
+      .then(response => {
+        this.answer = response.data.answer
+      })
+      .catch(error => {
+        this.answer = 'Error! Could not reach the API.' + error
+      })
+    }
+  }
+}).mount('#watch-example')
+
+// Mapping an Array to Elements with v-for
+Vue.createApp({
+  data() {
+    return {
+      items: [
+        {message: 'Foo'},
+        {message: 'Bar'}
+      ]
+    }
+  }
+}).mount('#array-rendering')
